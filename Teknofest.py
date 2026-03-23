@@ -6,7 +6,7 @@ from matplotlib.animation import FuncAnimation
 from datetime import datetime
 
 # --- AYARLAR ---
-arduino_port = 'COM4'  # Kendi portuna göre değiştirmeyi unutma (Örn: COM3, COM5)
+arduino_port = 'COM4' # Arduino hangi porttaysa ona göre ayarla (COM3, COM5 vb.)
 baud_rate = 9600
 
 # Verileri saklamak için listeler
@@ -23,10 +23,10 @@ veri_sayaci = 0  # Konsol çıktısını seyreltecek sayaç
 try:
     plt.style.use('seaborn-darkgrid')
 except:
-    plt.style.use('ggplot')  # Eğer seaborn yoksa bunu kullanır
+    plt.style.use('ggplot')
 
 fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
-fig.suptitle('TEKNOFEST MHS: Canlı Veri Analizi')
+fig.suptitle('TEKNOFEST MHS: Canlı Veri Analizi') # Başlığı güncelledim
 
 # Arduino bağlantısını başlat
 try:
@@ -69,7 +69,7 @@ def animate(i):
                     gosterilecek_voltaj = voltaj_listesi[-20:]
                     gosterilecek_guc = guc_listesi[-20:]
 
-                    # --- KONSOL ÇIKTISI DÜZENLEMESİ ---
+                    # --- KONSOL ÇIKTISI ---
                     if voltaj != son_voltaj or guc != son_guc or (veri_sayaci % 30) == 0:
                         print(f"{su_an} | V: {voltaj:.4f} V, P: {guc:.4f} uW")
                         son_voltaj = voltaj
@@ -94,7 +94,7 @@ def animate(i):
                     ax2.cla()
                     ax2.plot(gosterilecek_zaman, gosterilecek_guc, color='red', label='Güç (uW)', marker='o')
                     ax2.legend(loc='upper left')
-                    ax2.set_ylabel('Güç (mikroWatt)')
+                    ax2.set_ylabel('Güç (mikroWatt)') 
                     ax2.set_xlabel('Zaman')
                     ax2.grid(True)
 
